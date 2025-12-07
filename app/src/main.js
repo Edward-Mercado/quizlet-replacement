@@ -12,6 +12,9 @@ function randomInt(min, max) { // simpler syntax for the random
 }
 
 function putQuestionOnScreen(currentMode) {
+  const eUmlautButton = document.querySelector(".e-umlaut-button");
+  eUmlautButton.style.display = "none";
+
   let questionId = randomInt(1, questionList.length);
   let targetQuestion = questionList[questionId];
 
@@ -140,6 +143,9 @@ function checkAnswerMCQ(questionId, correctAnswer, selectedAnswer) {
 }
 
 function insertFormFRQ(correctAnswer, questionId) {
+  const eUmlautButton = document.querySelector(".e-umlaut-button");
+  eUmlautButton.style.display = "flex";
+
   const answersContainer = document.getElementById("answers__container");
   answersContainer.innerHTML = "";
   answersContainer.insertAdjacentHTML("beforeend", `
@@ -163,6 +169,9 @@ function insertFormFRQ(correctAnswer, questionId) {
 function checkAnswerFRQ(correctAnswer, questionId, answerInput) {
   const questionContainer = document.getElementById("question__container");
   questionContainer.innerHTML = "";
+
+  const eUmlautButton = document.querySelector(".e-umlaut-button");
+  eUmlautButton.style.display = "none";
 
   const answerForm = document.getElementById("answersFormText");
   answerForm.innerHTML = "";
@@ -204,6 +213,13 @@ nextQuestionButton.addEventListener("click", () => {
 })
 
 const switchModeButton = document.getElementById("switch-mode");
+
+const eUmlautButton = document.querySelector(".e-umlaut-button");
+eUmlautButton.addEventListener("click", () => {
+  const answerInputField = document.getElementById("answer-input");
+  answerInputField.value += "ë";
+})
+eUmlautButton.style.display = "none";
 
 let currentMode = "MCQ"
 switchModeButton.addEventListener("click", () => {

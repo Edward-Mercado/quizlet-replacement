@@ -215,6 +215,51 @@ h1 {
   animation: buttonPress 0.2s ease-in-out;
 }
 
+.answers__textbox {
+  width: 40vw;
+  height: 0;
+  transition: .7s ease-in-out;
+  background-color: rgb(56, 28, 96);
+  border: black 3px solid;
+  padding: 3%;
+  border-radius: 10px;
+}
+.answers__textbox:focus {
+  width: 45vw;
+  height: 1%;
+  background-color: rgb(76, 50, 113);
+  border: black 3px solid;
+  border-radius: 10px;
+}
+
+.e-umlaut-button {
+  background-color: #1a1a1a;
+  position: fixed;
+  left: 5%;
+  bottom: 10%;
+  color: white;
+  font-family: Helvetica;
+  width: 30%;
+  height: 6%;
+  font-family: "Helvetica";
+  font-weight: bold;
+  font-size: 2em;
+  border-radius: 10px;
+  border: black 4px solid;
+  background-color: #213547;
+  transition: ease-in-out .3s;
+  display: flex;
+}
+.e-umlaut-button:hover {
+  background-color: #3b4d5b;
+  border-color: white;
+  transform: translateY(-4px);
+  box-shadow:rgba(17, 19, 23, 0.4) 0px 2px 2px;
+}
+.e-umlaut-button:active {
+  animation: buttonPress 0.4s ease-in-out;
+}
+
 @keyframes buttonPress {
   0% {
     transform: scale(1.0) translateY(-4px);
