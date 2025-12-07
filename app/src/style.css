@@ -89,6 +89,31 @@ h1 {
 #next-question:active {
   animation: buttonPress 0.4s ease-in-out;
 }
+#switch-mode {
+  background-color: #1a1a1a;
+  position: fixed;
+  left: 5%;
+  bottom: 2%;
+  color: white;
+  font-family: Helvetica;
+  width: 30%;
+  height: 7vh;
+  font-family: "Helvetica";
+  font-weight: bold;
+  font-size: 2em;
+  border-radius: 10px;
+  border: black 4px solid;
+  transition: ease-in-out .3s;
+}
+#switch-mode:hover {
+  background-color: #3b4d5b;
+  border-color: white;
+  transform: translateY(-4px);
+  box-shadow:rgba(17, 19, 23, 0.4) 0px 2px 2px;
+}
+#switch-mode:active {
+  animation: buttonPress 0.4s ease-in-out;
+}
 
 .answers__container {
   width: 10em;

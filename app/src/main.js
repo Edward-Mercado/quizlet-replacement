@@ -11,7 +11,7 @@ function randomInt(min, max) { // simpler syntax for the random
   }
 }
 
-function putQuestionOnScreen() {
+function putQuestionOnScreen(currentMode) {
   let questionId = randomInt(1, questionList.length);
   let targetQuestion = questionList[questionId];
 
@@ -27,10 +27,15 @@ function putQuestionOnScreen() {
   );
 
   let correctAnswer = targetQuestion.backSide;
-  insertAnswers(correctAnswer, questionId);
+  if(currentMode === "MCQ") {
+    insertAnswersMCQ(correctAnswer, questionId);
+  }
+  else if (currentMode ==="FRQ") {
+    insertFormFRQ(correctAnswer, questionId)
+  }
 }
 
-function createEmptyForm() {
+function createEmptyFormMCQ() {
   const answerChoices = document.getElementById("answers__container");
   answerChoices.innerHTML = "";
   answerChoices.insertAdjacentHTML("afterbegin", `
@@ -45,8 +50,8 @@ function createEmptyForm() {
     `)
 }
 
-function insertAnswers(correctAnswer, questionId) {
-  createEmptyForm();
+function insertAnswersMCQ(correctAnswer, questionId) {
+  createEmptyFormMCQ();
   let answerChoiceNumber = randomInt(0, 3);
 
   const answersContainer = document.querySelector(".answer-buttons__container");
@@ -91,12 +96,12 @@ function insertAnswers(correctAnswer, questionId) {
   answerForm.addEventListener("submit", (event) => {
     event.preventDefault();
     if(selectedAnswer) {
-      checkAnswer(questionId, correctAnswer, selectedAnswer);
+      checkAnswerMCQ(questionId, correctAnswer, selectedAnswer);
     }
   })
 }
 
-function checkAnswer(questionId, correctAnswer, selectedAnswer) {
+function checkAnswerMCQ(questionId, correctAnswer, selectedAnswer) {
   const questionContainer = document.getElementById("question__container");
   questionContainer.innerHTML = "";
 
@@ -134,7 +139,82 @@ function checkAnswer(questionId, correctAnswer, selectedAnswer) {
   }
 }
 
+function insertFormFRQ(correctAnswer, questionId) {
+  const answersContainer = document.getElementById("answers__container");
+  answersContainer.innerHTML = "";
+  answersContainer.insertAdjacentHTML("beforeend", `
+    <form class="answers__form" id="answersFormText">
+      <h2 class="answers__title"> Type the correct answer. </h2>
+
+      <input class="answers__textbox" type="text" maxlength="20" id="answer-input" name="answer-input" placeholder="Type something...">
+      <input class="answers__submit-button" type="submit" value="CONFIRM"/>
+    </form>
+    `);
+  const answersForm = document.getElementById("answersFormText")
+    answersForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      let answerInput = document.getElementById("answer-input").value;
+      if(answerInput) {
+        checkAnswerFRQ(correctAnswer, questionId, answerInput);
+      }
+    })
+}
+
+function checkAnswerFRQ(correctAnswer, questionId, answerInput) {
+  const questionContainer = document.getElementById("question__container");
+  questionContainer.innerHTML = "";
+
+  const answerForm = document.getElementById("answersFormText");
+  answerForm.innerHTML = "";
+
+  const resultsContainer = document.getElementById("results__container");
+
+  if(correctAnswer === answerInput) {
+    resultsContainer.insertAdjacentHTML("beforeend", `
+      <div class="correct-answer showAnswerAnimation">
+      <h2 class="result-text"> CORRECT! </h2>
+      <h2 class="result-text"> Question: ${questionList[questionId].frontSide} </h2>
+      <h2 class="result-text"> Answer: ${correctAnswer} </h2>
+      </div>
+      `)
+    const answerDiv = document.querySelector(".showAnswerAnimation");
+    answerDiv.addEventListener("animationend", () => {
+    answerDiv.classList.remove("showAnswerAnimation")
+    })
+  }
+  else {
+    resultsContainer.insertAdjacentHTML("beforeend", `
+      <div class="incorrect-answer showAnswerAnimation">
+      <h2 class="result-text"> INCORRECT! </h2>
+      <h2 class="result-text"> Question: ${questionList[questionId].frontSide} </h2>
+      <h2 class="result-text"> Correct Answer: ${correctAnswer} </h2>
+      <h2 class="result-text"> You Typed: ${answerInput} </h2>
+      </div>
+      `)
+    const answerDiv = document.querySelector(".showAnswerAnimation");
+    answerDiv.addEventListener("animationend", () => {
+      answerDiv.classList.remove("showAnswerAnimation")
+    })
+  }
+}
+
 const nextQuestionButton = document.getElementById("next-question");
 nextQuestionButton.addEventListener("click", () => {
-  putQuestionOnScreen();
+  putQuestionOnScreen(currentMode);
+})
+
+const switchModeButton = document.getElementById("switch-mode");
+
+let currentMode = "MCQ"
+switchModeButton.addEventListener("click", () => {
+  if(currentMode === "MCQ") {
+    currentMode = "FRQ";
+    switchModeButton.textContent = "SWITCH TO MCQ";
+    putQuestionOnScreen(currentMode);
+  }
+  else if(currentMode === "FRQ") {
+    currentMode = "MCQ";
+    switchModeButton.textContent = "SWITCH TO FRQ";
+    putQuestionOnScreen(currentMode);
+  }
 })
