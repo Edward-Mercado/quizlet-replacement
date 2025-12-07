@@ -15,6 +15,9 @@ function putQuestionOnScreen(currentMode) {
   const eUmlautButton = document.querySelector(".e-umlaut-button");
   eUmlautButton.style.display = "none";
 
+  const nextQuestionButton = document.getElementById("next-question");
+  nextQuestionButton.textContent = "REROLL QUESTION";
+
   let questionId = randomInt(1, questionList.length);
   let targetQuestion = questionList[questionId];
 
@@ -108,6 +111,9 @@ function checkAnswerMCQ(questionId, correctAnswer, selectedAnswer) {
   const questionContainer = document.getElementById("question__container");
   questionContainer.innerHTML = "";
 
+  const nextQuestionButton = document.getElementById("next-question");
+  nextQuestionButton.textContent = "NEXT QUESTION";
+
   const answerForm = document.getElementById("answersForm");
   answerForm.innerHTML = "";
 
@@ -172,6 +178,9 @@ function checkAnswerFRQ(correctAnswer, questionId, answerInput) {
 
   const eUmlautButton = document.querySelector(".e-umlaut-button");
   eUmlautButton.style.display = "none";
+
+  const nextQuestionButton = document.getElementById("next-question");
+  nextQuestionButton.textContent = "NEXT QUESTION";
 
   const answerForm = document.getElementById("answersFormText");
   answerForm.innerHTML = "";
