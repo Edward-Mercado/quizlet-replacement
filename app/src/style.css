@@ -248,7 +248,7 @@ h1 {
   border: black 4px solid;
   background-color: #213547;
   transition: ease-in-out .3s;
-  display: flex;
+  text-align: center;
 }
 .e-umlaut-button:hover {
   background-color: #3b4d5b;
@@ -258,6 +258,20 @@ h1 {
 }
 .e-umlaut-button:active {
   animation: buttonPress 0.4s ease-in-out;
+}
+
+.streak__box {
+  background-color: #1a1a1a;
+  color: white;
+  border: 4px solid black;
+  border-radius: 1%;
+  position: fixed;
+  left: 0.2%;
+  width: 20%;
+  height: 5%;
+  text-align: center;
+  padding-top: 0.5%;
+  font-weight: 700;
 }
 
 @keyframes buttonPress {

@@ -1,6 +1,9 @@
 import {questionList} from "./qlist.js"
 import './style.css'
 
+let currentMode = localStorage.getItem("currentMode") || "MCQ";
+let streak = localStorage.getItem("streak") || 0;
+
 function randomInt(min, max) { // simpler syntax for the random
   let difference = max - min;
   if (Math.floor((Math.random()*difference))+min !== NaN) {
@@ -11,7 +14,14 @@ function randomInt(min, max) { // simpler syntax for the random
   }
 }
 
+function updateStreakCounter() {
+  const streakBox = document.querySelector(".streak__box");
+  streakBox.textContent = `CURRENT STREAK: ${streak}`
+}
+
 function putQuestionOnScreen(currentMode) {
+  localStorage.setItem("currentMode", currentMode);
+
   const eUmlautButton = document.querySelector(".e-umlaut-button");
   eUmlautButton.style.display = "none";
 
@@ -131,6 +141,7 @@ function checkAnswerMCQ(questionId, correctAnswer, selectedAnswer) {
     answerDiv.addEventListener("animationend", () => {
     answerDiv.classList.remove("showAnswerAnimation")
     })
+    streak++;
   }
   else {
     resultsContainer.insertAdjacentHTML("beforeend", `
@@ -145,12 +156,15 @@ function checkAnswerMCQ(questionId, correctAnswer, selectedAnswer) {
     answerDiv.addEventListener("animationend", () => {
       answerDiv.classList.remove("showAnswerAnimation")
     })
+
+    streak = 0;
   }
+  updateStreakCounter();
 }
 
 function insertFormFRQ(correctAnswer, questionId) {
   const eUmlautButton = document.querySelector(".e-umlaut-button");
-  eUmlautButton.style.display = "flex";
+  eUmlautButton.style.display = "block";
 
   const answersContainer = document.getElementById("answers__container");
   answersContainer.innerHTML = "";
@@ -158,7 +172,7 @@ function insertFormFRQ(correctAnswer, questionId) {
     <form class="answers__form" id="answersFormText">
       <h2 class="answers__title"> Type the correct answer. </h2>
 
-      <input class="answers__textbox" type="text" maxlength="20" id="answer-input" name="answer-input" placeholder="Type something...">
+      <input class="answers__textbox" type="text" maxlength="30" id="answer-input" name="answer-input" placeholder="Type something...">
       <input class="answers__submit-button" type="submit" value="CONFIRM"/>
     </form>
     `);
@@ -187,6 +201,9 @@ function checkAnswerFRQ(correctAnswer, questionId, answerInput) {
 
   const resultsContainer = document.getElementById("results__container");
 
+  console.log(answerInput);
+  console.log(correctAnswer);
+
   if(correctAnswer === answerInput) {
     resultsContainer.insertAdjacentHTML("beforeend", `
       <div class="correct-answer showAnswerAnimation">
@@ -199,6 +216,7 @@ function checkAnswerFRQ(correctAnswer, questionId, answerInput) {
     answerDiv.addEventListener("animationend", () => {
     answerDiv.classList.remove("showAnswerAnimation")
     })
+    streak++;
   }
   else {
     resultsContainer.insertAdjacentHTML("beforeend", `
@@ -213,7 +231,9 @@ function checkAnswerFRQ(correctAnswer, questionId, answerInput) {
     answerDiv.addEventListener("animationend", () => {
       answerDiv.classList.remove("showAnswerAnimation")
     })
+    streak=0;
   }
+  updateStreakCounter();
 }
 
 const nextQuestionButton = document.getElementById("next-question");
@@ -226,11 +246,10 @@ const switchModeButton = document.getElementById("switch-mode");
 const eUmlautButton = document.querySelector(".e-umlaut-button");
 eUmlautButton.addEventListener("click", () => {
   const answerInputField = document.getElementById("answer-input");
-  answerInputField.value += "ë";
+  answerInputField.value += "ё";
 })
 eUmlautButton.style.display = "none";
 
-let currentMode = "MCQ"
 switchModeButton.addEventListener("click", () => {
   if(currentMode === "MCQ") {
     currentMode = "FRQ";
@@ -243,3 +262,5 @@ switchModeButton.addEventListener("click", () => {
     putQuestionOnScreen(currentMode);
   }
 })
+updateStreakCounter();
+putQuestionOnScreen(currentMode);
