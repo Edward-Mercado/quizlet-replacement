@@ -21,11 +21,7 @@ export const questionList = [
   },
   {
     frontSide: "class session",
-    backSide: "занятние",
-  },
-  {
-    frontSide: "department",
-    backSide: "кафедра",
+    backSide: "занятие",
   },
   {
     frontSide: "class",
@@ -345,5 +341,84 @@ export const questionList = [
   {
     frontSide: "whose (m / f / n / pl)",
     backSide: "чей / чья / чьё / чьи",
+  },{
+    frontSide: "graduate school (program)",
+    backSide: "аспирантура",
+  },
+  {
+    frontSide: "biology",
+    backSide: "биология",
+  },
+  {
+    frontSide: "finance / finances",
+    backSide: "финансы",
+  },
+  {
+    frontSide: "physics",
+    backSide: "физика",
+  },
+  {
+    frontSide: "chemistry",
+    backSide: "химия",
+  },
+  {
+    frontSide: "exam",
+    backSide: "экзамен",
+  },
+  {
+    frontSide: "course",
+    backSide: "курс",
+  },
+  {
+    frontSide: "seminar",
+    backSide: "семинар",
+  },
+  {
+    frontSide: "lecture",
+    backSide: "лекция",
+  },
+  {
+    frontSide: "specialty / major",
+    backSide: "специальность",
+  },
+  {
+    frontSide: "why?",
+    backSide: "почему",
+  },
+  {
+    frontSide: "difficult (adverb)",
+    backSide: "трудно",
+  },
+  {
+    frontSide: "philological (related to languages, literature)",
+    backSide: "филологический",
+  },
+  {
+    frontSide: "written (adj.)",
+    backSide: "письменный",
+  },
+  {
+    frontSide: "difficult (adj.)",
+    backSide: "трудный",
+  },
+  {
+    frontSide: "more difficult / harder",
+    backSide: "труднее",
+  },
+  {
+    frontSide: "schoolboy / girl",
+    backSide: "школьник / школьница",
+  },
+  {
+    frontSide: "semester",
+    backSide: "семестр",
+  },
+  {
+    frontSide: "department",
+    backSide: "факультет",
+  }, 
+  {
+    frontSide: "oral (adj)",
+    backSide: "устный",
   }
 ]

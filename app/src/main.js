@@ -262,5 +262,13 @@ switchModeButton.addEventListener("click", () => {
     putQuestionOnScreen(currentMode);
   }
 })
+
+if (currentMode === "MCQ") {
+  switchModeButton.textContent = "SWITCH TO FRQ";
+}
+else {
+  switchModeButton.textContent = "SWITCH TO MCQ";
+}
+
 updateStreakCounter();
 putQuestionOnScreen(currentMode);
