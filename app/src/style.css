@@ -322,6 +322,21 @@ h1 {
   animation: buttonPress 0.2s ease-in-out;
 }
 
+.card-side {
+  border-radius: 10px;
+  padding: 5%;
+  max-width: 40%;
+  width: 40%;
+  margin: 3%;
+}
+
+#question-containers {
+  width: 100vw;
+  height: 100vh;
+  padding: auto;
+  text-align: center;
+}
+
 @keyframes buttonPress {
   0% {
     transform: scale(1.0) translateY(-4px);

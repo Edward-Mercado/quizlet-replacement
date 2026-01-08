@@ -285,8 +285,8 @@ function showAllWords() {
 questionList.forEach((question) => {
   document.getElementById("view-all-words").insertAdjacentHTML("beforeend", `
     <div class="word-card">
-      <h2> ${question.frontSide} </h2>
-      <h2> ${question.backSide}</h2>
+      <h2 class="card-side"> ${question.frontSide} </h2>
+      <h2 class="card-side"> ${question.backSide}</h2>
     </div>
     `)
 })
