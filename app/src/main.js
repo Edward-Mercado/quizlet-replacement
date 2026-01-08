@@ -2,6 +2,7 @@ import {questionList} from "./qlist.js"
 import './style.css'
 
 let currentMode = localStorage.getItem("currentMode") || "MCQ";
+let viewOrPlay = localStorage.getItem("view-or-play") || "view";
 let streak = localStorage.getItem("streak") || 0;
 
 function randomInt(min, max) { // simpler syntax for the random
@@ -15,12 +16,16 @@ function randomInt(min, max) { // simpler syntax for the random
 }
 
 function updateStreakCounter() {
-  const streakBox = document.querySelector(".streak__box");
+  const streakBox = document.getElementById("streak__box");
   streakBox.textContent = `CURRENT STREAK: ${streak}`
 }
 
 function putQuestionOnScreen(currentMode) {
   localStorage.setItem("currentMode", currentMode);
+  localStorage.setItem("viewOrPlay", "play");
+  document.getElementById("view-or-play-button").textContent = "VIEW WORDS"
+  document.getElementById("view-all-words").style.display = 'none';
+  document.getElementById("question-containers").style.display = '';
 
   const eUmlautButton = document.querySelector(".e-umlaut-button");
   eUmlautButton.style.display = "none";
@@ -270,5 +275,37 @@ else {
   switchModeButton.textContent = "SWITCH TO MCQ";
 }
 
+function showAllWords() {
+  document.getElementById("question-containers").style.display = 'none';
+  document.getElementById("view-all-words").style.display = '';
+  localStorage.setItem("view-or-play", "view");
+  document.getElementById("view-or-play-button").textContent = "PLAY GAME"
+}
+
+questionList.forEach((question) => {
+  document.getElementById("view-all-words").insertAdjacentHTML("beforeend", `
+    <div class="word-card">
+      <h2> ${question.frontSide} </h2>
+      <h2> ${question.backSide}</h2>
+    </div>
+    `)
+})
+
+if(viewOrPlay === "view") {
+  showAllWords();
+} else {
+  putQuestionOnScreen(currentMode)
+}
+
+document.getElementById("view-or-play-button").addEventListener("click", () => {
+  console.log(viewOrPlay)
+  if(viewOrPlay === "view") {
+    viewOrPlay = "play";
+    showAllWords();
+  } else {
+    viewOrPlay = "view"
+    putQuestionOnScreen(currentMode)
+  }
+})
+
 updateStreakCounter();
-putQuestionOnScreen(currentMode);
