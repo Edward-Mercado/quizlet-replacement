@@ -323,6 +323,7 @@ h1 {
 }
 
 .card-side {
+  background-color: #0a0d41;
   border-radius: 10px;
   padding: 5%;
   max-width: 40%;
