@@ -1,424 +1,102 @@
 export const questionList = [
-  {
-    frontSide: "science",
-    backSide: "наука",
-  },
-  {
-    frontSide: "grade",
-    backSide: "отметка",
-  },
-  {
-    frontSide: "grade A",
-    backSide: "пятёрка",
-  },
-  {
-    frontSide: "grade C",
-    backSide: "тройка",
-  },
-  {
-    frontSide: "grade B",
-    backSide: "четвёрка",
-  },
-  {
-    frontSide: "class session",
-    backSide: "занятие",
-  },
-  {
-    frontSide: "class",
-    backSide: "класс",
-  },
-  {
-    frontSide: "graduate student",
-    backSide: "аспирант",
-  },
-  {
-    frontSide: "classmate (university)",
-    backSide: "однокурсник",
-  },
-  {
-    frontSide: "competition",
-    backSide: "конкурс",
-  },
-  {
-    frontSide: "security guard",
-    backSide: "охранник",
-  },
-  {
-    frontSide: "Korean",
-    backSide: "корейский",
-  },
-  {
-    frontSide: "money",
-    backSide: "деньги",
-  },
-  {
-    frontSide: "native",
-    backSide: "родной",
-  },
-  {
-    frontSide: "first",
-    backSide: "первый",
-  },
-  {
-    frontSide: "second",
-    backSide: "второй",
-  },
-  {
-    frontSide: "third",
-    backSide: "третий",
-  },
-  {
-    frontSide: "fourth",
-    backSide: "четвёртый",
-  },
-  {
-    frontSide: "sixth",
-    backSide: "шестой",
-  },
-  {
-    frontSide: "seventh",
-    backSide: "седьмой",
-  },
-  {
-    frontSide: "eighth",
-    backSide: "восьмой",
-  },
-  {
-    frontSide: "ninth",
-    backSide: "девятый",
-  },
-  {
-    frontSide: "tenth",
-    backSide: "десятый",
-  },
-  {
-    frontSide: "spring (adj.)",
-    backSide: "весенний",
-  },
-  {
-    frontSide: "summer (adj.)",
-    backSide: "летний",
-  },
-  {
-    frontSide: "fall (adj.)",
-    backSide: "осенний",
-  },
-  {
-    frontSide: "entrance (adj.)",
-    backSide: "вступительный",
-  },
-  {
-    frontSide: "to choose",
-    backSide: "выбирать",
-  },
-  {
-    frontSide: "to give",
-    backSide: "давать",
-  },
-  {
-    frontSide: "to happen / occur",
-    backSide: "бывать",
-  },
-  {
-    frontSide: "to end / finish",
-    backSide: "кончаться",
-  },
-  {
-    frontSide: "to answer",
-    backSide: "отвечать",
-  },
-  {
-    frontSide: "to teach",
-    backSide: "преподавать",
-  },
-  {
-    frontSide: "to continue",
-    backSide: "продолжать",
-  },
-  {
-    frontSide: "to rent",
-    backSide: "снимать",
-  },
-  {
-    frontSide: "to feel",
-    backSide: "чувствовать",
-  },
-  {
-    frontSide: "good luck (to you)",
-    backSide: "вам удачи",
-  },
-  {
-    frontSide: "personally",
-    backSide: "лично",
-  },
-  {
-    frontSide: "with parents",
-    backSide: "с родителями",
-  },
-  {
-    frontSide: "self",
-    backSide: "сам / сама / сами",
-  },
-  {
-    frontSide: "much / a lot more",
-    backSide: "намного",
-  },
-  {
-    frontSide: "to finish",
-    backSide: "заканчивать",
-  },
-  {
-    frontSide: "subject",
-    backSide: "предмет",
-  },
-  {
-    frontSide: "basis",
-    backSide: "основе",
-  },
-  {
-    frontSide: "required",
-    backSide: "обязательные",
-  },
-  {
-    frontSide: "school vacation",
-    backSide: "каникулы",
-  },
-  {
-    frontSide: "essay",
-    backSide: "сочинение",
-  },
-  {
-    frontSide: "good luck! (idiom)",
-    backSide: "Ни пуха ни пера!",
-  },
-  {
-    frontSide: "I wish you good luck",
-    backSide: "желаю вам удачи",
-  },
-  {
-    frontSide: "length",
-    backSide: "длина",
-  },
-  {
-    frontSide: "orally",
-    backSide: "устно",
-  },
-  {
-    frontSide: "independence",
-    backSide: "самостоятельность",
-  },
-  {
-    frontSide: "negative",
-    backSide: "отрицательный",
-  },
-  {
-    frontSide: "conditions",
-    backSide: "условия",
-  },
-  {
-    frontSide: "cramped",
-    backSide: "стеснённый",
-  },
-  {
-    frontSide: "quiet / quieter",
-    backSide: "тихо / тише",
-  },
-  {
-    frontSide: "expensive / more expensive",
-    backSide: "дорого / дороже",
-  },
-  {
-    frontSide: "noisy",
-    backSide: "шумно",
-  },
-  {
-    frontSide: "cheap",
-    backSide: "дешёво",
-  },
-  {
-    frontSide: "are held",
-    backSide: "проводятся",
-  },
-  {
-    frontSide: "part",
-    backSide: "часть",
-  },
-  {
-    frontSide: "little / few",
-    backSide: "мало",
-  },
-  {
-    frontSide: "to study (at a place)",
-    backSide: "учиться",
-  },
-  {
-    frontSide: "to study (a subject)",
-    backSide: "изучать",
-  },
-  {
-    frontSide: "to read / write / speak Russian",
-    backSide: "по-русски",
-  },
-  {
-    frontSide: "Russian (study / know / love)",
-    backSide: "русски",
-  },
-  {
-    frontSide: "what language?",
-    backSide: "какой язык",
-  },{
-    frontSide: "quiz / test",
-    backSide: "контрольная работа",
-  },
-  {
-    frontSide: "bachelor's degree",
-    backSide: "бакалавр",
-  },
-  {
-    frontSide: "colleague",
-    backSide: "коллега",
-  },
-  {
-    frontSide: "diploma",
-    backSide: "диплом",
-  },
-  {
-    frontSide: "assignment",
-    backSide: "задание",
-  },
-  {
-    frontSide: "foreign",
-    backSide: "иностранный",
-  },
-  {
-    frontSide: "fifth",
-    backSide: "пятый",
-  },
-  {
-    frontSide: "eleventh",
-    backSide: "одиннадцатый",
-  },
-  {
-    frontSide: "winter (adj.)",
-    backSide: "зимний",
-  },
-  {
-    frontSide: "future (adj.)",
-    backSide: "будущий",
-  },
-  {
-    frontSide: "other / another",
-    backSide: "другой",
-  },
-  {
-    frontSide: "to begin",
-    backSide: "начинаться",
-  },
-  {
-    frontSide: "to receive",
-    backSide: "получать",
-  },
-  {
-    frontSide: "except / besides",
-    backSide: "кроме",
-  },
-  {
-    frontSide: "in another way / differently",
-    backSide: "по-другому",
-  },
-  {
-    frontSide: "in the end / at the end",
-    backSide: "в конце",
-  },
-  {
-    frontSide: "to last (imperfective)",
-    backSide: "длиться",
-  },
-  {
-    frontSide: "to be occupied / engage in (NO direct object)",
-    backSide: "заниматься",
-  },
-  {
-    frontSide: "whose (m / f / n / pl)",
-    backSide: "чей / чья / чьё / чьи",
-  },{
-    frontSide: "graduate school (program)",
-    backSide: "аспирантура",
-  },
-  {
-    frontSide: "biology",
-    backSide: "биология",
-  },
-  {
-    frontSide: "finance / finances",
-    backSide: "финансы",
-  },
-  {
-    frontSide: "physics",
-    backSide: "физика",
-  },
-  {
-    frontSide: "chemistry",
-    backSide: "химия",
-  },
-  {
-    frontSide: "exam",
-    backSide: "экзамен",
-  },
-  {
-    frontSide: "course",
-    backSide: "курс",
-  },
-  {
-    frontSide: "seminar",
-    backSide: "семинар",
-  },
-  {
-    frontSide: "lecture",
-    backSide: "лекция",
-  },
-  {
-    frontSide: "specialty / major",
-    backSide: "специальность",
-  },
-  {
-    frontSide: "why?",
-    backSide: "почему",
-  },
-  {
-    frontSide: "difficult (adverb)",
-    backSide: "трудно",
-  },
-  {
-    frontSide: "philological (related to languages, literature)",
-    backSide: "филологический",
-  },
-  {
-    frontSide: "written (adj.)",
-    backSide: "письменный",
-  },
-  {
-    frontSide: "difficult (adj.)",
-    backSide: "трудный",
-  },
-  {
-    frontSide: "more difficult / harder",
-    backSide: "труднее",
-  },
-  {
-    frontSide: "schoolboy / girl",
-    backSide: "школьник / школьница",
-  },
-  {
-    frontSide: "semester",
-    backSide: "семестр",
-  },
-  {
-    frontSide: "department",
-    backSide: "факультет",
-  }, 
-  {
-    frontSide: "oral (adj)",
-    backSide: "устный",
-  }
-]
+  { frontSide: "orange", backSide: "апельсин" },
+  { frontSide: "banana", backSide: "банан" },
+  { frontSide: "ham", backSide: "ветчина" },
+  { frontSide: "Russian beet salad", backSide: "винегреет" },
+  { frontSide: "grapes", backSide: "винограад" },
+  { frontSide: "water", backSide: "вода" },
+  { frontSide: "jam", backSide: "джем / варенье" },
+  { frontSide: "caviar", backSide: "икра" },
+  { frontSide: "cabbage", backSide: "капуста" },
+  { frontSide: "sauerkraut", backSide: "квашеная капуста" },
+  { frontSide: "cauliflower", backSide: "цветная капуста" },
+  { frontSide: "potatoes", backSide: "картофель / картошка" },
+  { frontSide: "Coke", backSide: "кока-кола" },
+  { frontSide: "sausage", backSide: "колбаса" },
+  { frontSide: "coffee", backSide: "кофе" },
+  { frontSide: "chicken", backSide: "курица" },
+  { frontSide: "lemonade", backSide: "лимонад" },
+  { frontSide: "onion", backSide: "лук" },
+  { frontSide: "butter / oil", backSide: "масло" },
+  { frontSide: "vegetable oil", backSide: "расти́тельное масло" },
+  { frontSide: "milk", backSide: "молоко" },
+  { frontSide: "carrots", backSide: "морковь" },
+  { frontSide: "ice cream", backSide: "мороженое" },
+  { frontSide: "meat", backSide: "мясо" },
+  { frontSide: "vegetables", backSide: "овощи" },
+  { frontSide: "cucumber", backSide: "огурец" },
+  { frontSide: "pilaf", backSide: "плов" },
+  { frontSide: "tomato", backSide: "помидор" },
+  { frontSide: "produce / groceries", backSide: "продукты" },
+  { frontSide: "bird / poultry", backSide: "птица" },
+  { frontSide: "rice", backSide: "рис" },
+  { frontSide: "fish", backSide: "ры́ба" },
+  { frontSide: "salad", backSide: "салат" },
+  { frontSide: "sour cream", backSide: "сметана" },
+  { frontSide: "orange juice", backSide: "апельсиновый сок" },
+  { frontSide: "cheese", backSide: "сыр" },
+  { frontSide: "cake", backSide: "торт" },
+  { frontSide: "fruit", backSide: "фрукты" },
+  { frontSide: "bread", backSide: "хлеб" },
+  { frontSide: "tea (green or black)", backSide: "чай" },
+  { frontSide: "chocolate", backSide: "шоколад" },
+  { frontSide: "apple", backSide: "яблоко" },
+  { frontSide: "egg", backSide: "яйцо / яйца" },
+  { frontSide: "supermarket", backSide: "супермаркет" },
+  { frontSide: "market", backSide: "рынок" },
+  { frontSide: "jar / can", backSide: "банка" },
+  { frontSide: "bottle", backSide: "бутылка" },
+  { frontSide: "loaf", backSide: "буханка" },
+  { frontSide: "box", backSide: "коробка" },
+  { frontSide: "piece", backSide: "кусок" },
+  { frontSide: "money", backSide: "деньги" },
+  { frontSide: "kopeck", backSide: "копейка" },
+  { frontSide: "coffee maker", backSide: "кофеварка" },
+  { frontSide: "credit card", backSide: "кредитная карточка" },
+  { frontSide: "a drink", backSide: "напиток" },
+  { frontSide: "rouble", backSide: "рубль" },
+  { frontSide: "refrigerator", backSide: "холодильник" },
+  { frontSide: "cent", backSide: "цент" },
+  { frontSide: "person", backSide: "челове́к" },
+  { frontSide: "cheap", backSide: "дешёвый" },
+  { frontSide: "expensive", backSide: "дорогой" },
+  { frontSide: "cheaper", backSide: "дешёвле" },
+  { frontSide: "more expensive than", backSide: "дороже, чем" },
+  { frontSide: "orange (adj.)", backSide: "апельсиновый" },
+  { frontSide: "mineral water", backSide: "минеральная вода" },
+  { frontSide: "dairy products", backSide: "молочные продукты" },
+  { frontSide: "sweet", backSide: "сладкий" },
+  { frontSide: "Swiss", backSide: "швейцарский" },
+  { frontSide: "more / bigger", backSide: "больше" },
+  { frontSide: "cheaply", backSide: "дёшево" },
+  { frontSide: "expensively", backSide: "дорого" },
+  { frontSide: "enough", backSide: "достаточно" },
+  { frontSide: "little (of)", backSide: "мало" },
+  { frontSide: "less / smaller", backSide: "меньше" },
+  { frontSide: "a lot (of)", backSide: "много" },
+  { frontSide: "probably", backSide: "наверное" },
+  { frontSide: "must / need to", backSide: "надо" },
+  { frontSide: "how much / how many", backSide: "сколько" },
+  { frontSide: "too (much)", backSide: "слишком" },
+  { frontSide: "then / in that case", backSide: "тогда" },
+  { frontSide: "to take", backSide: "взять" },
+  { frontSide: "to eat", backSide: "есть" },
+  { frontSide: "to buy", backSide: "купить" },
+  { frontSide: "to drink", backSide: "пить" },
+  { frontSide: "to sell", backSide: "продавать" },
+  { frontSide: "to cost", backSide: "стоить" },
+  { frontSide: "to slice", backSide: "нарезать" },
+  { frontSide: "to pay (with cash)", backSide: "платить (наличными)" },
+  { frontSide: "just in case", backSide: "на всякий случай" },
+  { frontSide: "teapot", backSide: "чайник" },
+  { frontSide: "washing machine", backSide: "стиральная машина" },
+  { frontSide: "vacuum cleaner", backSide: "пылесос" },
+  { frontSide: "dishwasher", backSide: "посудомоечная машина" },
+  { frontSide: "stove", backSide: "плита" },
+  { frontSide: "microwave", backSide: "микроволновка" },
+  { frontSide: "kiosk / stand", backSide: "ларёк" },
+  { frontSide: "food store", backSide: "гастроном" },
+  { frontSide: "How much does this cost?", backSide: "Ско́лько это стоит?" },
+  { frontSide: "I don't have money / time", backSide: "у меня нет денег, времени" },
+  { frontSide: "flatbread", backSide: "лаваш" }
+];
