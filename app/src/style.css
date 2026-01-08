@@ -188,8 +188,11 @@ h1 {
 }
 
 #results__container {
-  position:fixed;
+  position: fixed;
+  display: flex;
   top: 30%;
+  left: 25%;
+  padding: auto;
 }
 
 .answers__submit-button {
@@ -332,6 +335,8 @@ h1 {
 }
 
 #question-containers {
+  display: flex;
+  flex-flow: column nowrap;
   width: 100vw;
   height: 100vh;
   padding: auto;
