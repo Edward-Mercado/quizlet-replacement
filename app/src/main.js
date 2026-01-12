@@ -3,7 +3,7 @@ import './style.css'
 
 let currentMode = localStorage.getItem("currentMode") || "MCQ";
 let viewOrPlay = localStorage.getItem("view-or-play") || "view";
-let streak = localStorage.getItem("streak") || 0;
+let streak = Number(JSON.parse(localStorage.getItem("streak"))) || 0;
 
 function randomInt(min, max) { // simpler syntax for the random
   let difference = max - min;
@@ -147,6 +147,7 @@ function checkAnswerMCQ(questionId, correctAnswer, selectedAnswer) {
     answerDiv.classList.remove("showAnswerAnimation")
     })
     streak++;
+    localStorage.setItem("streak", JSON.stringify(streak))
   }
   else {
     resultsContainer.insertAdjacentHTML("beforeend", `
@@ -209,7 +210,7 @@ function checkAnswerFRQ(correctAnswer, questionId, answerInput) {
   console.log(answerInput);
   console.log(correctAnswer);
 
-  if(correctAnswer === answerInput) {
+  if(correctAnswer.toLowerCase() === answerInput.toLowerCase()) {
     resultsContainer.insertAdjacentHTML("beforeend", `
       <div class="correct-answer showAnswerAnimation">
       <h2 class="result-text"> CORRECT! </h2>

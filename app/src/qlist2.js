@@ -1,26 +1,21 @@
 export const questionList = [
-    {
-        frontSide: "to end / finish",
-        backSide: "кончаться",
-      },
-      {
-        frontSide: "to continue",
-        backSide: "продолжать",
-      },
-      {
-        frontSide: "to finish",
-        backSide: "заканчивать",
-      },
-      {
-        frontSide: "negative",
-        backSide: "отрицательный",
-      },
-      {
-        frontSide: "are held",
-        backSide: "проводятся",
-      },
-      {
-        frontSide: "to finish",
-        backSide: "заканчивать",
-      }
-  ]
+  { frontSide: "Russian beet salad", backSide: "винегрет" },
+  { frontSide: "jam", backSide: "джем / варенье" },
+  { frontSide: "sauerkraut", backSide: "квашеная капуста" },
+  { frontSide: "cauliflower", backSide: "цветная капуста" },
+  { frontSide: "ice cream", backSide: "мороженое" },
+  { frontSide: "vegetables", backSide: "овощи" },
+  { frontSide: "bird / poultry", backSide: "птица" },
+  { frontSide: "box", backSide: "коробка" },
+  { frontSide: "piece", backSide: "кусок" },
+  { frontSide: "coffee maker", backSide: "кофеварка" },
+  { frontSide: "probably", backSide: "наверное" },
+  { frontSide: "must / need to", backSide: "надо" },
+  { frontSide: "too (much)", backSide: "слишком" },
+  { frontSide: "then / in that case", backSide: "тогда" },
+  { frontSide: "to slice", backSide: "нарезать" },
+  { frontSide: "to pay (with cash)", backSide: "платить (наличными)" },
+  { frontSide: "just in case", backSide: "на всякий случай" },
+  { frontSide: "microwave", backSide: "микроволновка" },
+  { frontSide: "kiosk / stand", backSide: "ларёк" },
+];
