@@ -49,7 +49,7 @@ function putQuestionOnScreen(currentMode) {
   questionContainer.innerHTML = "";
   questionContainer.insertAdjacentHTML("beforeend",
     `
-    <h2 class="goldman-regular"> ${targetQuestion.frontSide} </h2>
+    <h2 class="goldman-regular text-2xl font-black"> ${targetQuestion.frontSide} </h2>
     `
   );
 
@@ -72,7 +72,7 @@ function createEmptyFormMCQ() {
       <div id="answer-buttons__container" class="flex flex-col items-center justify-around w-full">
       
       </div>
-      <input class="btn animation-button-press bg-purple-900 text-white hover:bg-purple-500 hover:text-black w-full rounded-full"  type="submit" value="CONFIRM"/>
+      <input class="btn animation-button-press bg-purple-900 text-white hover:bg-purple-500 hover:text-black w-full rounded-full audiowide-regular"  type="submit" value="CONFIRM"/>
     </form>
     `)
 }
@@ -188,7 +188,7 @@ function insertFormFRQ(correctAnswer, questionId) {
       <div class="w-full h-[3%] my-4 rounded-full bg-white text-[0.001em]">.</div>
 
       <input class="bg-purple-300 text-black tektur-regular w-[90%] h-[15%] p-2 rounded-2xl my-2 pl-5" type="text" maxlength="30" id="answer-input" name="answer-input" placeholder="Type something...">
-      <input class="my-5 btn animation-button-press bg-purple-900 text-white hover:bg-purple-500 hover:text-black w-full rounded-full"  type="submit" value="CONFIRM"/>
+      <input class="my-5 btn animation-button-press bg-purple-900 text-white hover:bg-purple-500 hover:text-black w-full rounded-full audiowide-regular"  type="submit" value="CONFIRM"/>
     </form>
     `);
   const answersForm = document.getElementById("answersFormText")
