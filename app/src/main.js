@@ -11,7 +11,7 @@ allQuestionLists.forEach((questionList) => {
     allQuestions.words.push(word)
   })
 })
-allQuestionLists.push(allQuestions)
+allQuestionLists.unshift(allQuestions)
 
 let currentMode = localStorage.getItem("currentMode") || "MCQ";
 let viewOrPlay = localStorage.getItem("view-or-play") || "view"
