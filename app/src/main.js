@@ -17,22 +17,24 @@ let currentMode = localStorage.getItem("currentMode") || "MCQ";
 let viewOrPlay = localStorage.getItem("view-or-play") || "view"
 let streak = Number(JSON.parse(localStorage.getItem("streak"))) || 0;
 let customLists = JSON.parse(localStorage.getItem("custom-lists")) || [];
-let qListName =  localStorage.getItem("question-list-name") || allQuestionLists[0].name
+let qListName = localStorage.getItem("question-list-name") || allQuestionLists[0].name
 
 customLists.forEach((list) => {
   allQuestionLists.push(list)
 })
 
-let questionList =  JSON.parse(localStorage.getItem("question-list")) ||allQuestionLists[0].words
+let questionList = JSON.parse(localStorage.getItem("question-list")) || allQuestionLists[0].words
 console.log(questionList)
 
-let questionDictionary = allQuestionLists.find((qlist) => qlist.name === qListName)
+let questionDictionary =  allQuestionLists.find((qlist) => qlist.name === qListName)
 
-if(questionDictionary.isCustom) {
-  document.getElementById("delete-question-list").style.display = ""
-} else {
-  document.getElementById("delete-question-list").style.display = "none"
-} 
+if(questionDictionary) {
+  if(questionDictionary.isCustom) {
+    document.getElementById("delete-question-list").style.display = ""
+  } else {
+    document.getElementById("delete-question-list").style.display = "none"
+  } 
+}
 
 let onResultsPage = false
 let isTyping = false
