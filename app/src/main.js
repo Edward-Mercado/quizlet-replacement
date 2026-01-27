@@ -219,7 +219,7 @@ function insertFormFRQ(correctAnswer, questionId) {
       <h2 class="goldman-regular my-2"> Type the correct answer. </h2>
       <div class="w-full h-[3%] my-4 rounded-full bg-white text-[0.001em]">.</div>
 
-      <input class="bg-purple-300 text-black tektur-regular w-[90%] h-[15%] p-2 rounded-2xl my-2 pl-5 focus:border-3 focus:outline-none focus:bg-purple-200 transition-all ease-in-out focus:border-black" type="text" maxlength="30" id="answer-input" name="answer-input" placeholder="Type something...">
+      <input class="bg-purple-300 text-black tektur-regular w-[90%] h-[15%] p-2 rounded-2xl my-2 pl-5 focus:border-3 focus:outline-none focus:bg-purple-200 transition-all ease-in-out duration-300 focus:border-black" type="text" maxlength="30" id="answer-input" name="answer-input" placeholder="Type something...">
       <input class="my-5 btn animation-button-press bg-purple-900 text-white hover:bg-purple-500 hover:text-black w-full rounded-full audiowide-regular"  type="submit" value="CONFIRM"/>
     </form>
     `);
