@@ -1,15 +1,16 @@
-import {questionList} from "./qlist.js"
+import { questionList } from "./qlist.js"
 import './style.css'
 
 let currentMode = localStorage.getItem("currentMode") || "MCQ";
 let viewOrPlay = localStorage.getItem("view-or-play") || "play";
 let streak = Number(JSON.parse(localStorage.getItem("streak"))) || 0;
 let onResultsPage = false
+let isTyping = false
 
 function randomInt(min, max) { // simpler syntax for the random
   let difference = max - min;
-  if (Math.floor((Math.random()*difference))+min !== NaN) {
-    return Math.floor((Math.random()*difference))+min;
+  if (Math.floor((Math.random() * difference)) + min !== NaN) {
+    return Math.floor((Math.random() * difference)) + min;
   }
   else {
     return 0;
@@ -22,6 +23,7 @@ function updateStreakCounter() {
 }
 
 function putQuestionOnScreen(currentMode) {
+  isTyping = false
   document.getElementById("next-question").style.display = ""
   document.getElementById("switch-mode").style.display = ""
   onResultsPage = false
@@ -45,17 +47,17 @@ function putQuestionOnScreen(currentMode) {
 
   const questionContainer = document.getElementById("question__container");
   questionContainer.innerHTML = "";
-  questionContainer.insertAdjacentHTML("beforeend", 
+  questionContainer.insertAdjacentHTML("beforeend",
     `
     <h2 class="goldman-regular"> ${targetQuestion.frontSide} </h2>
     `
   );
 
   let correctAnswer = targetQuestion.backSide;
-  if(currentMode === "MCQ") {
+  if (currentMode === "MCQ") {
     insertAnswersMCQ(correctAnswer, questionId);
   }
-  else if (currentMode ==="FRQ") {
+  else if (currentMode === "FRQ") {
     insertFormFRQ(correctAnswer, questionId)
   }
 }
@@ -70,7 +72,7 @@ function createEmptyFormMCQ() {
       <div id="answer-buttons__container" class="flex flex-col items-center justify-around w-full">
       
       </div>
-      <input class="btn animation-button-press bg-purple-900 text-white hover:bg-purple-500 hover:text-black w-full"  type="submit" value="CONFIRM"/>
+      <input class="btn animation-button-press bg-purple-900 text-white hover:bg-purple-500 hover:text-black w-full rounded-full"  type="submit" value="CONFIRM"/>
     </form>
     `)
 }
@@ -93,7 +95,7 @@ function insertAnswersMCQ(correctAnswer, questionId) {
       );
     } else {
       let wrongAnswerId = randomInt(0, questionList.length);
-      while(usedIds.find((id) => id===wrongAnswerId)) {
+      while (usedIds.find((id) => id === wrongAnswerId)) {
         wrongAnswerId = randomInt(0, questionList.length);
       }
       usedIds.push(wrongAnswerId);
@@ -101,7 +103,7 @@ function insertAnswersMCQ(correctAnswer, questionId) {
       answersContainer.insertAdjacentHTML("beforeend",
         `<button type="button" class="btn animation-button-press answer-btn bg-indigo-800 hover:bg-blue-500 active:bg-blue-300 hover:text-black active:text-black m-3 my-5 text-white w-[80%] rounded-full p-1 tektur-regular" data-answer="${wrongAnswer}">
           ${wrongAnswer}
-        </button>`) 
+        </button>`)
     }
   }
 
@@ -120,7 +122,7 @@ function insertAnswersMCQ(correctAnswer, questionId) {
   const answerForm = document.getElementById("answersForm");
   answerForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    if(selectedAnswer) {
+    if (selectedAnswer) {
       checkAnswerMCQ(questionId, correctAnswer, selectedAnswer);
     }
   })
@@ -139,7 +141,7 @@ function checkAnswerMCQ(questionId, correctAnswer, selectedAnswer) {
 
   const resultsContainer = document.getElementById("results__container");
 
-  if(correctAnswer === selectedAnswer) {
+  if (correctAnswer === selectedAnswer) {
     resultsContainer.insertAdjacentHTML("beforeend", `
       <div class="fixed top-[25%] h-[50%] w-[50%] left-[25%] flex flex-col items-center justify-between showAnswerAnimation bg-green-400/90 py-6 rounded-2xl border-3 border-green-700/90">
       <h2 class="text-emerald-950 font-black goldman-bold text-6xl text-center"> CORRECT! </h2>
@@ -149,7 +151,7 @@ function checkAnswerMCQ(questionId, correctAnswer, selectedAnswer) {
       `)
     const answerDiv = document.querySelector(".showAnswerAnimation");
     answerDiv.addEventListener("animationend", () => {
-    answerDiv.classList.remove("showAnswerAnimation")
+      answerDiv.classList.remove("showAnswerAnimation")
     })
     streak++;
     localStorage.setItem("streak", JSON.stringify(streak))
@@ -174,6 +176,7 @@ function checkAnswerMCQ(questionId, correctAnswer, selectedAnswer) {
 }
 
 function insertFormFRQ(correctAnswer, questionId) {
+  isTyping = true
   const eUmlautButton = document.getElementById("e-umlaut-button");
   eUmlautButton.style.display = "block";
 
@@ -185,17 +188,17 @@ function insertFormFRQ(correctAnswer, questionId) {
       <div class="w-full h-[3%] my-4 rounded-full bg-white text-[0.001em]">.</div>
 
       <input class="bg-purple-300 text-black tektur-regular w-[90%] h-[15%] p-2 rounded-2xl my-2 pl-5" type="text" maxlength="30" id="answer-input" name="answer-input" placeholder="Type something...">
-      <input class="my-5 btn animation-button-press bg-purple-900 text-white hover:bg-purple-500 hover:text-black w-full"  type="submit" value="CONFIRM"/>
+      <input class="my-5 btn animation-button-press bg-purple-900 text-white hover:bg-purple-500 hover:text-black w-full rounded-full"  type="submit" value="CONFIRM"/>
     </form>
     `);
   const answersForm = document.getElementById("answersFormText")
-    answersForm.addEventListener("submit", (event) => {
-      event.preventDefault();
-      let answerInput = document.getElementById("answer-input").value;
-      if(answerInput) {
-        checkAnswerFRQ(correctAnswer, questionId, answerInput);
-      }
-    })
+  answersForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    let answerInput = document.getElementById("answer-input").value;
+    if (answerInput) {
+      checkAnswerFRQ(correctAnswer, questionId, answerInput);
+    }
+  })
 }
 
 function checkAnswerFRQ(correctAnswer, questionId, answerInput) {
@@ -217,7 +220,7 @@ function checkAnswerFRQ(correctAnswer, questionId, answerInput) {
   console.log(answerInput);
   console.log(correctAnswer);
 
-  if(correctAnswer.toLowerCase().replaceAll(" ", "") === answerInput.toLowerCase().replaceAll(" ", "")) {
+  if (correctAnswer.toLowerCase().replaceAll(" ", "") === answerInput.toLowerCase().replaceAll(" ", "")) {
     resultsContainer.insertAdjacentHTML("beforeend", `
       <div class="fixed top-[25%] h-[50%] w-[50%] left-[25%] flex flex-col items-center justify-between showAnswerAnimation bg-green-400/90 py-6 rounded-2xl border-3 border-green-700/90">
       <h2 class="text-emerald-950 font-black goldman-bold text-6xl text-center"> CORRECT! </h2>
@@ -227,24 +230,24 @@ function checkAnswerFRQ(correctAnswer, questionId, answerInput) {
       `)
     const answerDiv = document.querySelector(".showAnswerAnimation");
     answerDiv.addEventListener("animationend", () => {
-    answerDiv.classList.remove("showAnswerAnimation")
+      answerDiv.classList.remove("showAnswerAnimation")
     })
     streak++;
   }
   else {
     resultsContainer.insertAdjacentHTML("beforeend", `
-      <div class="incorrect-answer showAnswerAnimation">
-      <h2 class="result-text"> INCORRECT! </h2>
-      <h2 class="result-text"> Question: ${questionList[questionId].frontSide} </h2>
-      <h2 class="result-text"> Correct Answer: ${correctAnswer} </h2>
-      <h2 class="result-text"> You Typed: ${answerInput} </h2>
+      <div class="fixed top-[25%] h-[50%] w-[50%] left-[25%] flex flex-col items-center justify-between showAnswerAnimation bg-red-500/90 py-6 rounded-2xl border-3 border-red-800/90 showAnswerAnimation">
+      <h2 class="text-rose-950 font-black goldman-bold text-6xl"> INCORRECT! </h2>
+      <h2 class="text-rose-950 font-black goldman-bold text-2xl"> Question: ${questionList[questionId].frontSide} </h2>
+      <h2 class="text-rose-950 font-black goldman-bold text-2xl"> Correct Answer: <span class="tektur-regular"> ${correctAnswer} </span> </h2>
+      <h2 class="text-rose-950 font-black goldman-bold text-2xl"> You Typed: <span class="tektur-regular"> ${answerInput} </span> </h2>
       </div>
       `)
     const answerDiv = document.querySelector(".showAnswerAnimation");
     answerDiv.addEventListener("animationend", () => {
       answerDiv.classList.remove("showAnswerAnimation")
     })
-    streak=0;
+    streak = 0;
   }
   updateStreakCounter();
 }
@@ -264,12 +267,12 @@ eUmlautButton.addEventListener("click", () => {
 eUmlautButton.style.display = "none";
 
 switchModeButton.addEventListener("click", () => {
-  if(currentMode === "MCQ") {
+  if (currentMode === "MCQ") {
     currentMode = "FRQ";
     switchModeButton.textContent = "SWITCH TO MCQ";
     putQuestionOnScreen(currentMode);
   }
-  else if(currentMode === "FRQ") {
+  else if (currentMode === "FRQ") {
     currentMode = "MCQ";
     switchModeButton.textContent = "SWITCH TO FRQ";
     putQuestionOnScreen(currentMode);
@@ -284,6 +287,7 @@ else {
 }
 
 function showAllWords() {
+  isTyping = false
   document.getElementById("question-containers").style.display = 'none';
   document.getElementById("next-question").style.display = "none"
   document.getElementById("switch-mode").style.display = "none"
@@ -301,7 +305,7 @@ questionList.forEach((question) => {
     `)
 })
 
-if(viewOrPlay === "view") {
+if (viewOrPlay === "view") {
   showAllWords();
 } else {
   putQuestionOnScreen(currentMode)
@@ -309,7 +313,7 @@ if(viewOrPlay === "view") {
 
 document.getElementById("view-or-play-button").addEventListener("click", () => {
   console.log(viewOrPlay)
-  if(viewOrPlay === "view") {
+  if (viewOrPlay === "view") {
     viewOrPlay = "play";
     showAllWords();
   } else {
@@ -319,8 +323,15 @@ document.getElementById("view-or-play-button").addEventListener("click", () => {
 })
 
 document.addEventListener('keydown', (event) => {
-  if(event.key === 'Enter' && onResultsPage) {
+  if (event.key === 'Enter' && onResultsPage) {
     putQuestionOnScreen(currentMode);
+  }
+})
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === 'Meta' && isTyping) {
+      const answerInputField = document.getElementById("answer-input");
+      answerInputField.value += "ё";
   }
 })
 
