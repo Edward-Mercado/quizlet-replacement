@@ -1,9 +1,22 @@
-import { questionList } from "./qlist.js"
+import { allQuestionLists } from './qlists.js'
 import './style.css'
 
+let allQuestions = {
+  'name' : "All Words",
+  'words': []
+}
+allQuestionLists.forEach((questionList) => {
+  questionList.words.forEach((word) => {
+    allQuestions.words.push(word)
+  })
+})
+allQuestionLists.push(allQuestions)
+
 let currentMode = localStorage.getItem("currentMode") || "MCQ";
-let viewOrPlay = localStorage.getItem("view-or-play") || "play";
+let viewOrPlay = localStorage.getItem("view-or-play") || "view"
 let streak = Number(JSON.parse(localStorage.getItem("streak"))) || 0;
+
+let questionList = JSON.parse(localStorage.getItem("question-list")) || allQuestionLists[0].words
 let onResultsPage = false
 let isTyping = false
 
@@ -288,6 +301,7 @@ else {
 
 function showAllWords() {
   isTyping = false
+
   document.getElementById("question-containers").style.display = 'none';
   document.getElementById("next-question").style.display = "none"
   document.getElementById("switch-mode").style.display = "none"
@@ -311,8 +325,13 @@ if (viewOrPlay === "view") {
   putQuestionOnScreen(currentMode)
 }
 
+if(viewOrPlay === "view") {
+  viewOrPlay = 'play'
+} else {
+  viewOrPlay = "view"
+}
+
 document.getElementById("view-or-play-button").addEventListener("click", () => {
-  console.log(viewOrPlay)
   if (viewOrPlay === "view") {
     viewOrPlay = "play";
     showAllWords();
@@ -320,6 +339,62 @@ document.getElementById("view-or-play-button").addEventListener("click", () => {
     viewOrPlay = "view"
     putQuestionOnScreen(currentMode)
   }
+})
+
+document.getElementById("list-change").addEventListener("click", () => {
+  if(document.getElementById("question-lists-div")) {
+    return
+  }
+  
+  document.querySelector("body").insertAdjacentHTML("beforeend", `
+    <div id="question-lists-div" class="bg-black/95 rounded-2xl border-purple-950 border-2 w-[90vw] h-[90vh] fixed z-120 right-[5vw] top-[5vh] items-center flex flex-col showAnswerAnimation">
+      <h2 class="audiowide-regular bg-purple-900 px-10 border-purple-950 rounded-full text-center text-4xl m-3 h-[10%] flex items-center"> QUESTION LISTS</h2>
+      <div class="w-[95%] h-[2%] my-4 rounded-full bg-white text-[0.001em]">.</div>
+      <div id="question-lists-container" class="flex justify-around flex-wrap flex-row h-[73%] w-full">
+
+      </div>
+      <button id="close-question-lists-button" class="animation-button-press btn bg-purple-900 hover:bg-purple-500 active:bg-purple-300 hover:text-black border-3 border-purple-950 rounded-full w-[80%] audiowide-regular">CLOSE MENU</button>
+    </div>
+    `)
+
+  document.getElementById("question-lists-div")
+  .addEventListener("animationend", () => {
+    document.getElementById("question-lists-div").classList.remove("showAnswerAnimation")
+  })
+
+  document.getElementById("close-question-lists-button").addEventListener("click", () => {
+    document.getElementById('question-lists-div').remove()
+  })
+
+  allQuestionLists.forEach((list) => {
+    document.getElementById('question-lists-container').insertAdjacentHTML("beforeend", `
+        <button id="${list.name}" class="questionListButton animation-button-press btn bg-purple-900 border-3 border-purple-950 hover:bg-purple-500 active:bg-purple-300 rounded-full w-[30%] audiowide-regular"> ${list.name} </button>
+      `)
+  })
+
+  document.querySelectorAll(".questionListButton").forEach((button) => {
+    button.addEventListener("click", () => {
+
+      let targetList = allQuestionLists.find((list) => list.name === button.id)
+      if(targetList) {
+        questionList = targetList.words
+        localStorage.setItem("question-list", JSON.stringify(targetList.words))
+        document.getElementById('question-lists-div').remove()
+        
+        if(viewOrPlay === "view") {
+          putQuestionOnScreen(currentMode)
+        }
+        document.getElementById("view-all-words").innerHTML = ""
+        questionList.forEach((question) => {
+          document.getElementById("view-all-words").insertAdjacentHTML("beforeend", `
+            <div class="flex w-full flex-row justify-between bg-purple-600 m-3 h-[10vh] px-[3%] items-center rounded-2xl">
+              <h2 class="border-2 border-black bg-purple-900 w-[45%] h-[80%] flex justify-center items-center rounded-full font-bold goldman-regular text-xl"> ${question.frontSide} </h2>
+              <h2 class="border-2 border-black bg-purple-900 w-[45%] h-[80%] flex justify-center items-center rounded-full font-bold tektur-regular text-xl"> ${question.backSide} </h2>
+            </div>
+            `)
+        })
+      }
+  })})
 })
 
 document.addEventListener('keydown', (event) => {
@@ -330,8 +405,8 @@ document.addEventListener('keydown', (event) => {
 
 document.addEventListener("keydown", (event) => {
   if (event.key === 'Meta' && isTyping) {
-      const answerInputField = document.getElementById("answer-input");
-      answerInputField.value += "ё";
+    const answerInputField = document.getElementById("answer-input");
+    answerInputField.value += "ё";
   }
 })
 
