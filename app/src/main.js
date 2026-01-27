@@ -219,7 +219,7 @@ function insertFormFRQ(correctAnswer, questionId) {
       <h2 class="goldman-regular my-2"> Type the correct answer. </h2>
       <div class="w-full h-[3%] my-4 rounded-full bg-white text-[0.001em]">.</div>
 
-      <input class="bg-purple-300 text-black tektur-regular w-[90%] h-[15%] p-2 rounded-2xl my-2 pl-5" type="text" maxlength="30" id="answer-input" name="answer-input" placeholder="Type something...">
+      <input class="bg-purple-300 text-black tektur-regular w-[90%] h-[15%] p-2 rounded-2xl my-2 pl-5 focus:border-3 focus:outline-none focus:bg-purple-200 transition-all ease-in-out focus:border-black" type="text" maxlength="30" id="answer-input" name="answer-input" placeholder="Type something...">
       <input class="my-5 btn animation-button-press bg-purple-900 text-white hover:bg-purple-500 hover:text-black w-full rounded-full audiowide-regular"  type="submit" value="CONFIRM"/>
     </form>
     `);
@@ -231,6 +231,21 @@ function insertFormFRQ(correctAnswer, questionId) {
       checkAnswerFRQ(correctAnswer, questionId, answerInput);
     }
   })
+}
+
+function FRQ_Forgiveness(correctAnswer, answerInput) {
+  let correctAnswerForgiven = correctAnswer
+    .toLowerCase()
+    .replaceAll(/[()/, ]/g, "")
+  let answerInputForgiven = answerInput
+    .toLowerCase()
+    .replaceAll(/[()/, ]/g, "")
+
+  if(correctAnswerForgiven === answerInputForgiven) {
+    return true
+  } else {
+    return false
+  }
 }
 
 function checkAnswerFRQ(correctAnswer, questionId, answerInput) {
@@ -252,7 +267,7 @@ function checkAnswerFRQ(correctAnswer, questionId, answerInput) {
   console.log(answerInput);
   console.log(correctAnswer);
 
-  if (correctAnswer.toLowerCase().replaceAll(" ", "") === answerInput.toLowerCase().replaceAll(" ", "")) {
+  if (FRQ_Forgiveness(correctAnswer, answerInput)) {
     resultsContainer.insertAdjacentHTML("beforeend", `
       <div class="fixed top-[25%] h-[50%] w-[50%] left-[25%] flex flex-col items-center justify-between showAnswerAnimation bg-green-400/90 py-6 rounded-2xl border-3 border-green-700/90">
       <h2 class="text-emerald-950 font-black goldman-bold text-6xl text-center"> CORRECT! </h2>
