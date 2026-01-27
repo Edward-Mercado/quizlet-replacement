@@ -108,7 +108,8 @@ export const allQuestionLists = [
             { frontSide: "semester", backSide: "семестр" },
             { frontSide: "department", backSide: "факультет" },
             { frontSide: "oral (adj)", backSide: "устный" }
-          ]
+          ],
+          'isCustom': false
     },
     {
         'name': "Troika Unit 11",
@@ -213,6 +214,7 @@ export const allQuestionLists = [
             { frontSide: "How much does this cost?", backSide: "Сколько это стоит?" },
             { frontSide: "I don't have money / time", backSide: "у меня нет денег, времени" },
             { frontSide: "flatbread", backSide: "лаваш" }
-          ]
+          ],
+          'isCustom': false
     }
 ]

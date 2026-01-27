@@ -2,8 +2,9 @@ import { allQuestionLists } from './qlists.js'
 import './style.css'
 
 let allQuestions = {
-  'name' : "All Words",
-  'words': []
+  'name': "All Words",
+  'words': [],
+  'isCustom': false
 }
 allQuestionLists.forEach((questionList) => {
   questionList.words.forEach((word) => {
@@ -15,8 +16,24 @@ allQuestionLists.push(allQuestions)
 let currentMode = localStorage.getItem("currentMode") || "MCQ";
 let viewOrPlay = localStorage.getItem("view-or-play") || "view"
 let streak = Number(JSON.parse(localStorage.getItem("streak"))) || 0;
+let customLists = JSON.parse(localStorage.getItem("custom-lists")) || [];
+let qListName =  localStorage.getItem("question-list-name") || allQuestionLists[0].name
 
-let questionList = JSON.parse(localStorage.getItem("question-list")) || allQuestionLists[0].words
+customLists.forEach((list) => {
+  allQuestionLists.push(list)
+})
+
+let questionList =  JSON.parse(localStorage.getItem("question-list")) ||allQuestionLists[0].words
+console.log(questionList)
+
+let questionDictionary = allQuestionLists.find((qlist) => qlist.name === qListName)
+
+if(questionDictionary.isCustom) {
+  document.getElementById("delete-question-list").style.display = ""
+} else {
+  document.getElementById("delete-question-list").style.display = "none"
+} 
+
 let onResultsPage = false
 let isTyping = false
 
@@ -102,7 +119,7 @@ function insertAnswersMCQ(correctAnswer, questionId) {
     if (i === answerChoiceNumber) {
       answersContainer.insertAdjacentHTML(
         "beforeend",
-        `<button type="button" class="btn answer-btn bg-indigo-800 hover:bg-blue-500 active:bg-blue-300 animation-button-press hover:text-black active:text-black m-3 my-5 text-white w-[80%] rounded-full p-1 tektur-regular" data-answer="${correctAnswer}">
+        `<button type="button" class="btn answer-btn bg-indigo-800 hover:bg-blue-500 active:bg-blue-300 animation-button-press hover:text-black active:text-black m-3 my-4 text-white w-[80%] rounded-full p-1 tektur-regular" data-answer="${correctAnswer}">
           ${correctAnswer}
         </button>`
       );
@@ -114,7 +131,7 @@ function insertAnswersMCQ(correctAnswer, questionId) {
       usedIds.push(wrongAnswerId);
       let wrongAnswer = questionList[wrongAnswerId].backSide;
       answersContainer.insertAdjacentHTML("beforeend",
-        `<button type="button" class="btn animation-button-press answer-btn bg-indigo-800 hover:bg-blue-500 active:bg-blue-300 hover:text-black active:text-black m-3 my-5 text-white w-[80%] rounded-full p-1 tektur-regular" data-answer="${wrongAnswer}">
+        `<button type="button" class="btn animation-button-press answer-btn bg-indigo-800 hover:bg-blue-500 active:bg-blue-300 hover:text-black active:text-black m-3 my-4 text-white w-[80%] rounded-full p-1 tektur-regular" data-answer="${wrongAnswer}">
           ${wrongAnswer}
         </button>`)
     }
@@ -310,6 +327,31 @@ function showAllWords() {
   document.getElementById("view-or-play-button").textContent = "PLAY GAME"
 }
 
+function selectNewList(targetList) {
+  questionList = targetList.words
+  localStorage.setItem("question-list-name", targetList.name)
+  qListName = targetList.name
+  if(targetList.isCustom) {
+    document.getElementById("delete-question-list").style.display = ""
+  } else {
+    document.getElementById("delete-question-list").style.display = "none"
+  }
+  localStorage.setItem("question-list", JSON.stringify(targetList.words))
+
+  if (viewOrPlay === "view") {
+    putQuestionOnScreen(currentMode)
+  }
+  document.getElementById("view-all-words").innerHTML = ""
+  questionList.forEach((question) => {
+    document.getElementById("view-all-words").insertAdjacentHTML("beforeend", `
+      <div class="flex w-full flex-row justify-between bg-purple-600 m-3 h-[10vh] px-[3%] items-center rounded-2xl">
+        <h2 class="border-2 border-black bg-purple-900 w-[45%] h-[80%] flex justify-center items-center rounded-full font-bold goldman-regular text-xl"> ${question.frontSide} </h2>
+        <h2 class="border-2 border-black bg-purple-900 w-[45%] h-[80%] flex justify-center items-center rounded-full font-bold tektur-regular text-xl"> ${question.backSide} </h2>
+      </div>
+    `)
+  })
+}
+
 questionList.forEach((question) => {
   document.getElementById("view-all-words").insertAdjacentHTML("beforeend", `
     <div class="flex w-full flex-row justify-between bg-purple-600 m-3 h-[10vh] px-[3%] items-center rounded-2xl">
@@ -325,7 +367,7 @@ if (viewOrPlay === "view") {
   putQuestionOnScreen(currentMode)
 }
 
-if(viewOrPlay === "view") {
+if (viewOrPlay === "view") {
   viewOrPlay = 'play'
 } else {
   viewOrPlay = "view"
@@ -342,25 +384,95 @@ document.getElementById("view-or-play-button").addEventListener("click", () => {
 })
 
 document.getElementById("list-change").addEventListener("click", () => {
-  if(document.getElementById("question-lists-div")) {
+  if (document.getElementById("question-lists-div")) {
     return
   }
-  
+
   document.querySelector("body").insertAdjacentHTML("beforeend", `
     <div id="question-lists-div" class="bg-black/95 rounded-2xl border-purple-950 border-2 w-[90vw] h-[90vh] fixed z-120 right-[5vw] top-[5vh] items-center flex flex-col showAnswerAnimation">
-      <h2 class="audiowide-regular bg-purple-900 px-10 border-purple-950 rounded-full text-center text-4xl m-3 h-[10%] flex items-center"> QUESTION LISTS</h2>
+    <div class="flex justify-around items-center h-[20%] w-full">
+      <h2 class="audiowide-regular bg-purple-900 px-10 border-purple-950 rounded-full text-center text-2xl m-3 h-[60%] w-[55%] flex items-center"> VOCAB LISTS...</h2>
+      <button id="create-list-button" class="animation-button-press btn bg-purple-900 hover:bg-purple-500 active:bg-purple-300 hover:text-black border-3 border-purple-950 rounded-full h-[60%] w-[40%] audiowide-regular text-xl"> CREATE YOUR OWN LIST </button>
+    </div>
       <div class="w-[95%] h-[2%] my-4 rounded-full bg-white text-[0.001em]">.</div>
-      <div id="question-lists-container" class="flex justify-around flex-wrap flex-row h-[73%] w-full">
+      <div id="question-lists-container" class="flex justify-around flex-wrap flex-row h-[69%] w-full">
 
       </div>
-      <button id="close-question-lists-button" class="animation-button-press btn bg-purple-900 hover:bg-purple-500 active:bg-purple-300 hover:text-black border-3 border-purple-950 rounded-full w-[80%] audiowide-regular">CLOSE MENU</button>
+      <button id="close-question-lists-button" class="animation-button-press btn bg-purple-900 hover:bg-purple-500 active:bg-purple-300 hover:text-black border-3 border-purple-950 rounded-full w-[80%] audiowide-regular my-5">CLOSE MENU</button>
     </div>
     `)
 
+  document.getElementById("create-list-button")
+    .addEventListener("click", () => {
+      document.getElementById('question-lists-div').remove()
+
+      document.querySelector("body").insertAdjacentHTML("afterbegin", `
+      <button id="cancel-custom-list" class="audiowide-regular bg-purple-900 hover:bg-purple-500 animation-button-press px-10 border-purple-950 rounded-full text-center text-4xl fixed right-2 z-150 top-2"> CANCEL </button>
+      <form id="custom-word-list-form" class="fixed bg-black/90 w-full h-full z-130 p-5 overflow-y-scroll"> 
+        <h2 class="audiowide-regular bg-purple-900 px-10 border-purple-950 rounded-full text-center text-4xl fixed top-2"> SELECT WORDS </h2>
+        <div id="custom-word-selection" class="mt-[5%] w-full overflow-y-scroll">
+      
+        </div>
+        </form>
+      `)
+      
+      document.getElementById("cancel-custom-list").addEventListener("click", () => {
+        document.getElementById("custom-word-list-form").remove()
+        document.getElementById("cancel-custom-list").remove()
+      })
+
+      allQuestionLists.forEach((questionList) => {
+        if (questionList.name !== "All Words") {
+          document.getElementById("custom-word-selection")
+            .insertAdjacentHTML("beforeend", `
+            <h2 class="audiowide-regular bg-purple-900 px-10 border-purple-950 rounded-full text-center text-2xl"> ${questionList.name} </h2>
+            `)
+          questionList.words.forEach((word) => {
+            document.getElementById("custom-word-selection").insertAdjacentHTML("beforeend", `
+              <div class="my-2">
+                <input id="${word.frontSide}" type="checkbox"  class="checkbox wordCheckbox" />
+                <label for="${word.frontSide}" class="tektur-regular mx-2"> ${word.frontSide} ||| ${word.backSide} </label>
+              </div>
+      `)
+          })
+        }
+      })
+
+      document.getElementById("custom-word-list-form").insertAdjacentHTML("beforeend", `
+        <input class="bg-purple-300 text-black tektur-regular w-[90%] h-[5vh] p-2 rounded-2xl my-2 pl-5" type="text" maxlength="30" id="list-name" placeholder="Name your custom vocabulary list...">
+        <input type="submit" value="CONFIRM" class="animation-button-press btn bg-purple-900 border-3 border-purple-950 hover:bg-purple-500 active:bg-purple-300 rounded-full w-[30%] audiowide-regular"/>
+        `)
+
+      document.getElementById("custom-word-list-form").addEventListener("submit", (e) => {
+        e.preventDefault()
+        document.getElementById("cancel-custom-list").remove()
+        let checkBoxes = Array.from(document.querySelectorAll(".wordCheckbox:checked"))
+
+        let customListWords = []
+
+        checkBoxes.forEach((checkbox) => {
+          let word = allQuestions.words.find((word) => word.frontSide === checkbox.id)
+          customListWords.push(word)
+        })
+        let questionList = {
+          'name': document.getElementById("list-name").value,
+          'words': customListWords,
+          'isCustom': true
+        }
+        console.log(questionList)
+        customLists.push(questionList)
+        allQuestionLists.push(questionList)
+        document.getElementById("custom-word-list-form").remove()
+        selectNewList(questionList)
+        localStorage.setItem("custom-lists", JSON.stringify(customLists))
+      })
+
+    })
+
   document.getElementById("question-lists-div")
-  .addEventListener("animationend", () => {
-    document.getElementById("question-lists-div").classList.remove("showAnswerAnimation")
-  })
+    .addEventListener("animationend", () => {
+      document.getElementById("question-lists-div").classList.remove("showAnswerAnimation")
+    })
 
   document.getElementById("close-question-lists-button").addEventListener("click", () => {
     document.getElementById('question-lists-div').remove()
@@ -376,25 +488,12 @@ document.getElementById("list-change").addEventListener("click", () => {
     button.addEventListener("click", () => {
 
       let targetList = allQuestionLists.find((list) => list.name === button.id)
-      if(targetList) {
-        questionList = targetList.words
-        localStorage.setItem("question-list", JSON.stringify(targetList.words))
+      if (targetList) {
         document.getElementById('question-lists-div').remove()
-        
-        if(viewOrPlay === "view") {
-          putQuestionOnScreen(currentMode)
-        }
-        document.getElementById("view-all-words").innerHTML = ""
-        questionList.forEach((question) => {
-          document.getElementById("view-all-words").insertAdjacentHTML("beforeend", `
-            <div class="flex w-full flex-row justify-between bg-purple-600 m-3 h-[10vh] px-[3%] items-center rounded-2xl">
-              <h2 class="border-2 border-black bg-purple-900 w-[45%] h-[80%] flex justify-center items-center rounded-full font-bold goldman-regular text-xl"> ${question.frontSide} </h2>
-              <h2 class="border-2 border-black bg-purple-900 w-[45%] h-[80%] flex justify-center items-center rounded-full font-bold tektur-regular text-xl"> ${question.backSide} </h2>
-            </div>
-            `)
-        })
+        selectNewList(targetList)
       }
-  })})
+    })
+  })
 })
 
 document.addEventListener('keydown', (event) => {
@@ -408,6 +507,14 @@ document.addEventListener("keydown", (event) => {
     const answerInputField = document.getElementById("answer-input");
     answerInputField.value += "ё";
   }
+})
+
+document.getElementById("delete-question-list").addEventListener("click", () => {
+  let deleteList = allQuestionLists.find((qlist) => qlist.name === qListName)
+  allQuestionLists.pop(deleteList)
+  customLists.pop(deleteList)
+  localStorage.setItem("custom-lists", JSON.stringify(customLists))
+  selectNewList(allQuestionLists[0])
 })
 
 updateStreakCounter();
