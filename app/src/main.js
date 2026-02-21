@@ -447,7 +447,7 @@ document.getElementById("list-change").addEventListener("click", () => {
           questionList.words.forEach((word) => {
             document.getElementById("custom-word-selection").insertAdjacentHTML("beforeend", `
               <div class="my-2">
-                <input id="${word.frontSide}" type="checkbox"  class="checkbox wordCheckbox" />
+                <input id="${word.frontSide}" type="checkbox"  class="checkbox wordCheckbox" data-listId="${word.listId}"/>
                 <label for="${word.frontSide}" class="tektur-regular mx-2"> ${word.frontSide} ||| ${word.backSide} </label>
               </div>
       `)
@@ -468,7 +468,7 @@ document.getElementById("list-change").addEventListener("click", () => {
         let customListWords = []
 
         checkBoxes.forEach((checkbox) => {
-          let word = allQuestions.words.find((word) => word.frontSide === checkbox.id)
+          let word = allQuestions.words.find((word) => word.frontSide === checkbox.id && word.listId === checkbox.getAttribute("data-listId"))
           customListWords.push(word)
         })
         let questionList = {
