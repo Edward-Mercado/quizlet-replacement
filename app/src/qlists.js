@@ -108,8 +108,8 @@ export const allQuestionLists = [
             { frontSide: "semester", backSide: "семестр", listId: "Troika Unit 10" },
             { frontSide: "department", backSide: "факультет", listId: "Troika Unit 10" },
             { frontSide: "oral (adj)", backSide: "устный", listId: "Troika Unit 10" }
-          ],
-          'isCustom': false
+        ],
+        'isCustom': false
     },
     {
         'name': "Troika Unit 11",
@@ -214,8 +214,8 @@ export const allQuestionLists = [
             { frontSide: "How much does this cost?", backSide: "Сколько это стоит?", listId: "Troika Unit 11" },
             { frontSide: "I don't have money / time", backSide: "у меня нет денег, времени", listId: "Troika Unit 11" },
             { frontSide: "flatbread", backSide: "лаваш", listId: "Troika Unit 11" }
-          ],
-          'isCustom': false
+        ],
+        'isCustom': false
     }, {
         'name': 'Troika Unit 12',
         'words': [
@@ -241,12 +241,12 @@ export const allQuestionLists = [
             { frontSide: "show", backSide: "сеанс", listId: "Troika Unit 12" },
             { frontSide: "list", backSide: "список", listId: "Troika Unit 12" },
             { frontSide: "bag", backSide: "сумка", listId: "Troika Unit 12" },
-          
+
             { frontSide: "main (adj.)", backSide: "главный", listId: "Troika Unit 12" },
             { frontSide: "home (adj.)", backSide: "домашний", listId: "Troika Unit 12" },
             { frontSide: "extra (adj.)", backSide: "лишний", listId: "Troika Unit 12" },
             { frontSide: "theater (adj.)", backSide: "театральный", listId: "Troika Unit 12" },
-          
+
             { frontSide: "for a long time", backSide: "долго", listId: "Troika Unit 12" },
             { frontSide: "still", backSide: "ещё", listId: "Troika Unit 12" },
             { frontSide: "not yet", backSide: "ещё не", listId: "Troika Unit 12" },
@@ -258,11 +258,11 @@ export const allQuestionLists = [
             { frontSide: "all", backSide: "весь", listId: "Troika Unit 12" },
             { frontSide: "all day", backSide: "весь день", listId: "Troika Unit 12" },
             { frontSide: "something", backSide: "что-нибудь", listId: "Troika Unit 12" },
-          
+
             { frontSide: "in (time period)", backSide: "за", listId: "Troika Unit 12" },
             { frontSide: "after", backSide: "после", listId: "Troika Unit 12" },
             { frontSide: "by / at", backSide: "у", listId: "Troika Unit 12" },
-          
+
             { frontSide: "to take", backSide: "брать / взять", listId: "Troika Unit 12" },
             { frontSide: "to see", backSide: "видеть / увидеть", listId: "Troika Unit 12" },
             { frontSide: "to meet", backSide: "встречаться / встретиться", listId: "Troika Unit 12" },
@@ -308,7 +308,7 @@ export const allQuestionLists = [
             { frontSide: "to smile", backSide: "улыбаться / улыбнуться", listId: "Troika Unit 12" },
             { frontSide: "to want", backSide: "хотеть", listId: "Troika Unit 12" },
             { frontSide: "to read", backSide: "читать / прочитать", listId: "Troika Unit 12" },
-            
+
             { frontSide: "all the best", backSide: "Всего хорошего", listId: "Troika Unit 12" },
             { frontSide: "let's watch", backSide: "давай посмотрим", listId: "Troika Unit 12" },
             { frontSide: "agreed", backSide: "договорились", listId: "Troika Unit 12" },
@@ -323,7 +323,98 @@ export const allQuestionLists = [
             { frontSide: "with pleasure", backSide: "с удовольствием", listId: "Troika Unit 12" },
             { frontSide: "with me", backSide: "со мной", listId: "Troika Unit 12" },
             { frontSide: "I am tired", backSide: "я устал", listId: "Troika Unit 12" }
-          ],
+        ],
         'isCustom': false
+    },
+    {
+        name: 'Troika Unit 13',
+        words: [
+            { frontSide: "bracelet", backSide: "браслет", listId: "Troika Unit 13" },
+            { frontSide: "necklace", backSide: "бусы", listId: "Troika Unit 13" },
+            { frontSide: "tie", backSide: "галстук", listId: "Troika Unit 13" },
+            { frontSide: "truck", backSide: "грузовик", listId: "Troika Unit 13" },
+            { frontSide: "perfume", backSide: "духи", listId: "Troika Unit 13" },
+            { frontSide: "toy", backSide: "игрушка", listId: "Troika Unit 13" },
+            { frontSide: "ring", backSide: "кольцо", listId: "Troika Unit 13" },
+            { frontSide: "doll", backSide: "кукла", listId: "Troika Unit 13" },
+            { frontSide: "teddy bear", backSide: "мишка", listId: "Troika Unit 13" },
+            { frontSide: "ball", backSide: "мяч", listId: "Troika Unit 13" },
+            { frontSide: "clothing", backSide: "одежда", listId: "Troika Unit 13" },
+            { frontSide: "gift", backSide: "подарок", listId: "Troika Unit 13" },
+            { frontSide: "airplane", backSide: "самолёт", listId: "Troika Unit 13" },
+            { frontSide: "sweater", backSide: "свитер", listId: "Troika Unit 13" },
+            { frontSide: "earring", backSide: "серёжка", listId: "Troika Unit 13" },
+            { frontSide: "purse, bag", backSide: "сумка", listId: "Troika Unit 13" },
+            { frontSide: "goods", backSide: "товары", listId: "Troika Unit 13" },
+            { frontSide: "sporting goods", backSide: "спортивные товары", listId: "Troika Unit 13" },
+            { frontSide: "flowers", backSide: "цветы", listId: "Troika Unit 13" },
+            { frontSide: "chain", backSide: "цепочка", listId: "Troika Unit 13" },
+            { frontSide: "watch", backSide: "часы", listId: "Troika Unit 13" },
+            { frontSide: "scarf", backSide: "шарф", listId: "Troika Unit 13" },
+            { frontSide: "jewelry", backSide: "ювелирные изделия", listId: "Troika Unit 13" },
+
+            { frontSide: "party", backSide: "вечеринка", listId: "Troika Unit 13" },
+            { frontSide: "March 8th", backSide: "Восьмое марта", listId: "Troika Unit 13" },
+            { frontSide: "International Women's Day", backSide: "Международный женский день", listId: "Troika Unit 13" },
+            { frontSide: "Grandfather Frost", backSide: "Дед Мороз", listId: "Troika Unit 13" },
+            { frontSide: "Independence Day", backSide: "День независимости", listId: "Troika Unit 13" },
+            { frontSide: "Victory Day", backSide: "День победы", listId: "Troika Unit 13" },
+            { frontSide: "birthday", backSide: "день рождения", listId: "Troika Unit 13" },
+            { frontSide: "Christmas tree", backSide: "ёлка", listId: "Troika Unit 13" },
+            { frontSide: "name day person", backSide: "именинник, именинница", listId: "Troika Unit 13" },
+            { frontSide: "name day", backSide: "именины", listId: "Troika Unit 13" },
+            { frontSide: "Easter", backSide: "Пасха", listId: "Troika Unit 13" },
+            { frontSide: "May Day", backSide: "Первое мая", listId: "Troika Unit 13" },
+            { frontSide: "holiday", backSide: "праздник", listId: "Troika Unit 13" },
+            { frontSide: "Christmas", backSide: "Рождество", listId: "Troika Unit 13" },
+            { frontSide: "Snow Maiden", backSide: "Снегурочка", listId: "Troika Unit 13" },
+            { frontSide: "morning party", backSide: "утренник", listId: "Troika Unit 13" },
+
+            { frontSide: "January", backSide: "январь", listId: "Troika Unit 13" },
+            { frontSide: "February", backSide: "февраль", listId: "Troika Unit 13" },
+            { frontSide: "March", backSide: "март", listId: "Troika Unit 13" },
+            { frontSide: "April", backSide: "апрель", listId: "Troika Unit 13" },
+            { frontSide: "May", backSide: "май", listId: "Troika Unit 13" },
+            { frontSide: "June", backSide: "июнь", listId: "Troika Unit 13" },
+            { frontSide: "July", backSide: "июль", listId: "Troika Unit 13" },
+            { frontSide: "August", backSide: "август", listId: "Troika Unit 13" },
+            { frontSide: "September", backSide: "сентябрь", listId: "Troika Unit 13" },
+            { frontSide: "October", backSide: "октябрь", listId: "Troika Unit 13" },
+            { frontSide: "November", backSide: "ноябрь", listId: "Troika Unit 13" },
+            { frontSide: "December", backSide: "декабрь", listId: "Troika Unit 13" },
+
+            { frontSide: "choice", backSide: "выбор", listId: "Troika Unit 13" },
+            { frontSide: "guest", backSide: "гость", listId: "Troika Unit 13" },
+            { frontSide: "idea", backSide: "идея", listId: "Troika Unit 13" },
+            { frontSide: "mask", backSide: "маска", listId: "Troika Unit 13" },
+            { frontSide: "card", backSide: "открытка", listId: "Troika Unit 13" },
+            { frontSide: "problem", backSide: "проблема", listId: "Troika Unit 13" },
+            { frontSide: "relative", backSide: "родственник", listId: "Troika Unit 13" },
+            { frontSide: "sweets", backSide: "сладости", listId: "Troika Unit 13" },
+            { frontSide: "host", backSide: "хозяин", listId: "Troika Unit 13" },
+            { frontSide: "hostess", backSide: "хозяйка", listId: "Troika Unit 13" },
+
+            { frontSide: "delicious", backSide: "вкусный", listId: "Troika Unit 13" },
+            { frontSide: "golden", backSide: "золотой", listId: "Troika Unit 13" },
+            { frontSide: "young", backSide: "молодой", listId: "Troika Unit 13" },
+            { frontSide: "fashionable", backSide: "модный", listId: "Troika Unit 13" },
+            { frontSide: "festive", backSide: "праздничный", listId: "Troika Unit 13" },
+            { frontSide: "sweet", backSide: "сладкий", listId: "Troika Unit 13" },
+
+            { frontSide: "to choose", backSide: "выбирать / выбрать", listId: "Troika Unit 13" },
+            { frontSide: "to give as gift", backSide: "дарить / подарить", listId: "Troika Unit 13" },
+            { frontSide: "to like", backSide: "нравиться / понравиться", listId: "Troika Unit 13" },
+            { frontSide: "to celebrate", backSide: "отмечать", listId: "Troika Unit 13" },
+            { frontSide: "to congratulate", backSide: "поздравлять", listId: "Troika Unit 13" },
+            { frontSide: "to buy", backSide: "покупать / купить", listId: "Troika Unit 13" },
+            { frontSide: "to receive", backSide: "получать / получить", listId: "Troika Unit 13" },
+            { frontSide: "to invite", backSide: "приглашать / пригласить", listId: "Troika Unit 13" },
+
+            { frontSide: "Happy Birthday!", backSide: "С днём рождения!", listId: "Troika Unit 13" },
+            { frontSide: "Happy New Year!", backSide: "С Новым годом!", listId: "Troika Unit 13" },
+            { frontSide: "Merry Christmas!", backSide: "С Рождеством!", listId: "Troika Unit 13" },
+            { frontSide: "Welcome!", backSide: "Добро пожаловать!", listId: "Troika Unit 13" }
+        ],
+        isCustom: false
     }
-  ]
+]
