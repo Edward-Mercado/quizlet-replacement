@@ -71,7 +71,7 @@ function putQuestionOnScreen(currentMode) {
   const nextQuestionButton = document.getElementById("next-question");
   nextQuestionButton.textContent = "REROLL QUESTION";
 
-  let questionId = randomInt(1, questionList.length);
+  let questionId = randomInt(0, questionList.length);
   let targetQuestion = questionList[questionId];
 
   const resultsContainer = document.getElementById("results__container");
