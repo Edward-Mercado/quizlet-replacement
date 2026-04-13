@@ -474,7 +474,14 @@ export const allQuestionLists = [
             { "frontSide": "older", "backSide": "старший / старше", "listId": "Troika Unit 13 Trimmed" },
             { "frontSide": "tasty food / cake", "backSide": "вкусная еда / вкусный торт", "listId": "Troika Unit 13 Trimmed" },
             { "frontSide": "good gift", "backSide": "хороший подарок", "listId": "Troika Unit 13 Trimmed" },
-            { "frontSide": "fun party", "backSide": "весёлая вечеринка", "listId": "Troika Unit 13 Trimmed" }
+            { "frontSide": "fun party", "backSide": "весёлая вечеринка", "listId": "Troika Unit 13 Trimmed" },
+            { "frontSide": "tie", "backSide": "галстук", "listId": "Troika Unit 13 Trimmed" },
+            { "frontSide": "ring", "backSide": "кольцо", "listId": "Troika Unit 13 Trimmed" },
+            { "frontSide": "number", "backSide": "число", "listId": "Troika Unit 13 Trimmed" },
+            { "frontSide": "offer", "backSide": "предложение", "listId": "Troika Unit 13 Trimmed" },
+            { "frontSide": "choice", "backSide": "выбор", "listId": "Troika Unit 13 Trimmed" },
+            { "frontSide": "international", "backSide": "международный", "listId": "Troika Unit 13 Trimmed" },
+            { "frontSide": "fashionable", "backSide": "модный", "listId": "Troika Unit 13 Trimmed" },
         ],
         isCustom: false
     }
